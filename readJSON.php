@@ -59,21 +59,7 @@ fclose($file);
 $rogernovakArray = array();
 for($i = 0; $i < count($allmatchURLs); $i++)
 {
-//    $url = $allmatchURLs[$i];
-//    $ch = curl_init();
-//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//    curl_setopt($ch, CURLOPT_URL, $url);
-//    $jsonstring = curl_exec($ch);
-//    curl_close($ch);
-//
-//    $jsonobj = json_decode($jsonstring);
-//    var_dump($jsonobj['stats'][0]);
-//
-//    array_push($rogernovakArray,$jsonobj['stats'][0]);
-//    array_push($rogernovakArray,$jsonobj['stats'][1]);
-
-    $url = "https://matchstat.com/tennis/match-stats/m/8348298";
+    $url = $allmatchURLs[$i];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -81,11 +67,25 @@ for($i = 0; $i < count($allmatchURLs); $i++)
     $jsonstring = curl_exec($ch);
     curl_close($ch);
 
-    $jsonobj = json_decode($jsonstring,true);
+    $jsonobj = json_decode($jsonstring);
     var_dump($jsonobj['stats'][0]);
-    echo $jsonobj['stats'][0]['match_stats_id'];
 
     array_push($rogernovakArray,$jsonobj['stats'][0]);
+    array_push($rogernovakArray,$jsonobj['stats'][1]);
+
+//    $url = "https://matchstat.com/tennis/match-stats/m/8348298";
+//    $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//    curl_setopt($ch, CURLOPT_URL, $url);
+//    $jsonstring = curl_exec($ch);
+//    curl_close($ch);
+//
+//    $jsonobj = json_decode($jsonstring,true);
+//    var_dump($jsonobj['stats'][0]);
+//    echo $jsonobj['stats'][0]['match_stats_id'];
+//
+//    array_push($rogernovakArray,$jsonobj['stats'][0]);
 }
 print_r($rogernovakArray);
 ?>
