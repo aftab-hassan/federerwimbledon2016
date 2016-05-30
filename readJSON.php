@@ -26,7 +26,7 @@ $handle = fopen($pageURL, "r");
 if ($handle) {
     while (($line = fgets($handle)) !== false) {
         // process the line read.
-        echo $line;
+        echo strlen($line);
     }
 
     fclose($handle);
