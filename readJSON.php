@@ -32,8 +32,6 @@ $file = fopen($pageURL,"r");
 $matchCount = 0;
 while ( ($line = fgets($file)) !== false)
 {
-    echo "\n";
-
 //    echo strlen($line);
 //    echo $line;
 
@@ -45,13 +43,13 @@ while ( ($line = fgets($file)) !== false)
     }
 
     /* tournament name */
-    if ((strpos($line, $exitPattern) !== false))
+    if ((strpos($line, $tournamentnamePattern) !== false))
     {
         echo $line;
     }
 
     /* winner */
-    if ((strpos($line, $exitPattern) !== false))
+    if ((strpos($line, $winnerPattern) !== false))
     {
         echo $line;
     }
