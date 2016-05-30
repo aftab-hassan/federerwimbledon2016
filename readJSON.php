@@ -47,6 +47,7 @@ while ( ($line = fgets($file)) !== false)
             $url = GetBetween("href=\"","\">",$line);
 //            echo $url;
 //            array_push($allmatchURLs,$url);
+            echo "doing a push";
             array_push($stack, "hello");
         }
     }
