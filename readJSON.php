@@ -57,7 +57,8 @@ fclose($file);
 //iterating all matchURLs and pushing stats to $rogernovakArray
 //this is an array of 45 matches * 2 players == 90 records
 $rogernovakArray = array();
-for($i = 0; $i < count($allmatchURLs); $i++)
+//for($i = 0; $i < count($allmatchURLs); $i++)
+for($i = 0; $i < 1; $i++)
 {
 //    $url = "https://matchstat.com/tennis/match-stats/m/8348298";
     $url = $allmatchURLs[$i];
@@ -71,6 +72,10 @@ for($i = 0; $i < count($allmatchURLs); $i++)
     $jsonobj = json_decode($jsonstring,true);
 //    var_dump($jsonobj['stats'][0]);
 //    echo $jsonobj['stats'][0]['match_stats_id'];
+
+    $jsonobj['stats'][0]['newfield'] = 99;
+    $jsonobj['stats'][1]['newfield'] = 199;
+
     array_push($rogernovakArray,$jsonobj['stats'][0]);
     array_push($rogernovakArray,$jsonobj['stats'][1]);
 }
