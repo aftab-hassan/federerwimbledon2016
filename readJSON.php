@@ -45,14 +45,15 @@ while ( ($line = fgets($file)) !== false)
 //            <a class="btn-stats" href="https://matchstat.com/tennis/match-stats/m/8339482">
             $url = GetBetween("href=\"","\">",$line);
 //            echo $url;
-            array_push($allmatchURLs,$url);
+//            array_push($allmatchURLs,$url);
+            array_push($allmatchURLs,"hello");
         }
     }
 }
 fclose($file);
 print_r($allmatchURLs);
 //var_dump($allmatchURLs);;
-echo "length == ".length($allmatchURLs);
+echo "length == ".count($allmatchURLs);
 
 //iterating all matchURLs and pushing stats to $rogernovakArray
 //this is an array of 45 matches * 2 players == 90 records
