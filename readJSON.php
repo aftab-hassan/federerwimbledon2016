@@ -23,6 +23,8 @@ $pageURL = "https://matchstat.com/tennis/h2h-odds-bets/Roger%20Federer/Novak%20D
 
 /* getting links to stats of all 46 matches */
 $allmatchURLs = array();
+$winnerArray = array();
+$tournamentnameArray = array();
 $urlPattern = "https://matchstat.com/tennis/match-stats/m/";
 $exitPattern = "Recently Played";
 $winnerPattern = "data-winner";
@@ -42,16 +44,20 @@ while ( ($line = fgets($file)) !== false)
         break;
     }
 
+    /* <td class="tmt"><a href="https://matchstat.com/tennis/tournaments/m/Australian%20Open/2016">Australian Open</a></td> */
     /* tournament name */
     if ((strpos($line, $tournamentnamePattern) !== false))
     {
-        echo $line;
+        $tournamentname = GetBetween("\"","</a>",$line);
+        array_push($tournamentnameArray,$tournamentname);
     }
 
+    /* <td class="w h2h-winner" data-winner="A"><a href="https://matchstat.com/tennis/player/Novak%20Djokovic">Novak Djokovic</a> </td> */
     /* winner */
     if ((strpos($line, $winnerPattern) !== false))
     {
-        echo $line;
+        $winner = GetBetween("\"","</a>",$line);
+        array_push($winnerArray,$winner);
     }
 
     /* match URL */
@@ -68,7 +74,9 @@ while ( ($line = fgets($file)) !== false)
     }
 }
 fclose($file);
-//print_r($allmatchURLs);
+print_r($allmatchURLs);
+print_r($tournamentnameArray);
+print_r($winnerArray);
 
 
 //iterating all matchURLs and pushing stats to $rogernovakArray
