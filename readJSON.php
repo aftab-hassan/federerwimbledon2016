@@ -76,6 +76,7 @@ for($i = 0; $i < 1; $i++)
     $jsonobj['stats'][0]['newfield'] = 99;
     $jsonobj['stats'][1]['newfield'] = 199;
     $jsonobj['stats'][1]['newfield2'] = 198;
+    $jsonobj['stats'][2]['newfield2'] = 198;
 
     array_push($rogernovakArray,$jsonobj['stats'][0]);
     array_push($rogernovakArray,$jsonobj['stats'][1]);
