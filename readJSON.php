@@ -21,7 +21,7 @@ function GetBetween($var1="",$var2="",$pool){
 //this is the page which contains all the stats
 $pageURL = "https://matchstat.com/tennis/h2h-odds-bets/Roger%20Federer/Novak%20Djokovic";
 
-//getting links to stats of all 45 matches
+/* getting links to stats of all 46 matches */
 $allmatchURLs = array();
 $pattern = "https://matchstat.com/tennis/match-stats/m/";
 $exitpattern = "Recently Played";
@@ -54,13 +54,15 @@ while ( ($line = fgets($file)) !== false)
 fclose($file);
 //print_r($allmatchURLs);
 
+/* storing winners of all 46 matches */
+
+
 //iterating all matchURLs and pushing stats to $rogernovakArray
 //this is an array of 45 matches * 2 players == 90 records
 $rogernovakArray = array();
 //for($i = 0; $i < count($allmatchURLs); $i++)
-for($i = 0; $i < 1; $i++)
+for($i = 0; $i < 5; $i++)
 {
-//    $url = "https://matchstat.com/tennis/match-stats/m/8348298";
     $url = $allmatchURLs[$i];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -70,16 +72,17 @@ for($i = 0; $i < 1; $i++)
     curl_close($ch);
 
     $jsonobj = json_decode($jsonstring,true);
-//    var_dump($jsonobj['stats'][0]);
-//    echo $jsonobj['stats'][0]['match_stats_id'];
-
-    $jsonobj['stats'][0]['newfield'] = 99;
-    $jsonobj['stats'][1]['newfield'] = 199;
-    $jsonobj['stats'][1]['newfield2'] = 198;
-    $jsonobj['stats'][2]['newfield2'] = 198;
 
     array_push($rogernovakArray,$jsonobj['stats'][0]);
     array_push($rogernovakArray,$jsonobj['stats'][1]);
 }
 print_r($rogernovakArray);
+
+
+/* writing to csv file */
+$fp = fopen('data.csv', 'w');
+foreach ($rogernovakArray as $fields) {
+    fputcsv($fp, $fields);
+}
+fclose($fp);
 ?>
