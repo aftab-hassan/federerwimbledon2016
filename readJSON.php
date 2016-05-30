@@ -42,30 +42,15 @@ while ( ($line = fgets($file)) !== false)
     {
         $matchCount++;
 
-//        /* <td style="text-align:center;"><i><a href="/wiki/Marupuram_(2016_film)" title="Marupuram (2016 film)">Marupuram</a></i></td> */
-//        $data = GetBetween("title","</a></i></td>",$line);
-//        $moviename = substr($data, strpos($data, ">") + 1);
-//
-//        /* otherwise the table formatting gets affected */
-//        if(strlen($moviename) < 50)
-//            array_push($movienamearray, $moviename);
-//
-//        $moviecount++;;
-//        $i++;
-
         if($matchCount > 1)
         {
-//            echo $line;
-
 //            <a class="btn-stats" href="https://matchstat.com/tennis/match-stats/m/8339482">
-            echo $data = GetBetween("href=\"","\">",$line)." ";
+            array_push($allmatchURL,GetBetween("href=\"","\">",$line));
         }
     }
-
-
-
 }
 fclose($file);
+var_dump($allmatchURL);
 
 //$matchURL = "https://matchstat.com/tennis/match-stats/m/8348298";
 //$ch = cmatchURL_init();
