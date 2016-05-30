@@ -17,7 +17,7 @@ $allmatchURL = array();
 $file = fopen($pageURL,"r");
 while ( ($line = fgets($file) !== false))
 {
-    echo count($line);
+    echo strlen($line);
 }
 fclose($file);
 
