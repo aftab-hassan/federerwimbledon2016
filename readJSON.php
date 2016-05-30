@@ -14,13 +14,25 @@ $rogernovakArray = array();
 
 //getting links to stats of all 45 matches
 $allmatchURL = array();
-$file = fopen($pageURL,"r");
-while ( ($line = fgets($file) !== false))
-{
-//    echo strlen($line);
-    echo $line;
+//$file = fopen($pageURL,"r");
+//while ( ($line = fgets($file) !== false))
+//{
+////    echo strlen($line);
+////    echo $line;
+//}
+//fclose($file);
+
+$handle = fopen($pageURL, "r");
+if ($handle) {
+    while (($line = fgets($handle)) !== false) {
+        // process the line read.
+        echo $line;
+    }
+
+    fclose($handle);
+} else {
+    // error opening the file.
 }
-fclose($file);
 
 //$matchURL = "https://matchstat.com/tennis/match-stats/m/8348298";
 //$ch = cmatchURL_init();
