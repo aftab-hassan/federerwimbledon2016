@@ -121,6 +121,7 @@ print_r($rogernovakArray);
 
 /* writing to csv file */
 $fp = fopen('data.csv', 'w');
+fputcsv($fp, array_keys($rogernovakArray[0]));
 foreach ($rogernovakArray as $fields) {
     fputcsv($fp, $fields);
 }
