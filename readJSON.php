@@ -59,7 +59,8 @@ fclose($file);
 $rogernovakArray = array();
 for($i = 0; $i < count($allmatchURLs); $i++)
 {
-    $url = "https://matchstat.com/tennis/match-stats/m/8348298";
+//    $url = "https://matchstat.com/tennis/match-stats/m/8348298";
+    $url = $allmatchURLs[$i];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -71,6 +72,7 @@ for($i = 0; $i < count($allmatchURLs); $i++)
 //    var_dump($jsonobj['stats'][0]);
 //    echo $jsonobj['stats'][0]['match_stats_id'];
     array_push($rogernovakArray,$jsonobj['stats'][0]);
+    array_push($rogernovakArray,$jsonobj['stats'][1]);
 }
 print_r($rogernovakArray);
 ?>
