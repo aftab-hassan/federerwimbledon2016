@@ -26,9 +26,10 @@ $rogernovakArray = array();
 
 //getting links to stats of all 45 matches
 $allmatchURL = array();
-$file = fopen($pageURL,"r");
 $pattern = "https://matchstat.com/tennis/match-stats/m/";
 $exitpattern = "Recently Played";
+
+$file = fopen($pageURL,"r");
 $matchCount = 0;
 while ( ($line = fgets($file)) !== false)
 {
@@ -45,6 +46,7 @@ while ( ($line = fgets($file)) !== false)
         if($matchCount > 1)
         {
 //            <a class="btn-stats" href="https://matchstat.com/tennis/match-stats/m/8339482">
+            echo GetBetween("href=\"","\">",$line);
             array_push($allmatchURL,GetBetween("href=\"","\">",$line));
         }
     }
