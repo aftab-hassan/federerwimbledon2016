@@ -17,8 +17,11 @@ $allmatchURL = array();
 $file = fopen($pageURL,"r");
 $pattern = "https://matchstat.com/tennis/match-stats/m/";
 $exitpattern = "Recently Played";
+$matchCount = 0;
 while ( ($line = fgets($file)) !== false)
 {
+    $matchCount++;
+
 //    echo strlen($line);
 //    echo $line;
 
@@ -38,7 +41,10 @@ while ( ($line = fgets($file)) !== false)
 //        $moviecount++;;
 //        $i++;
 
-        echo $line;
+        if($matchCount > 1)
+        {
+            echo $line;
+        }
     }
 
 }
