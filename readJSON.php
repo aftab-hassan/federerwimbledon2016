@@ -71,7 +71,7 @@ for($i = 0; $i < count($allmatchURLs); $i++)
     var_dump($jsonobj['stats'][0]);
 
     array_push($rogernovakArray,$jsonobj['stats'][0]);
-    array_push($rogernovakArray,$jsonobj['stats'][1]);
+    array_push($rogernovakArray,$jsonobj['stats'][1]);;
 
 //    $url = "https://matchstat.com/tennis/match-stats/m/8348298";
 //    $ch = curl_init();
