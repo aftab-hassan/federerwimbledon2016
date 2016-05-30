@@ -21,8 +21,8 @@ while ( ($line = fgets($file)) !== false)
 {
 //    echo strlen($line);
 //    echo $line;
-    
-    if ((strpos($line, $pattern) !== false))
+
+    if ((strpos($line, $exitpattern) !== false))
         exit;
 
     if ((strpos($line, $pattern) !== false))
