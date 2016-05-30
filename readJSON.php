@@ -25,7 +25,7 @@ $pageURL = "https://matchstat.com/tennis/h2h-odds-bets/Roger%20Federer/Novak%20D
 $allmatchURLs = array();
 $pattern = "https://matchstat.com/tennis/match-stats/m/";
 $exitpattern = "Recently Played";
-$stack = array("orange", "banana");
+//$stack = array("orange", "banana");
 
 $file = fopen($pageURL,"r");
 $matchCount = 0;
@@ -35,7 +35,10 @@ while ( ($line = fgets($file)) !== false)
 //    echo $line;
 
     if ((strpos($line, $exitpattern) !== false))
-        exit;
+    {
+        //        exit;
+        break;
+    }
 
     if ((strpos($line, $pattern) !== false))
     {
@@ -46,19 +49,19 @@ while ( ($line = fgets($file)) !== false)
 //            <a class="btn-stats" href="https://matchstat.com/tennis/match-stats/m/8339482">
             $url = GetBetween("href=\"","\">",$line);
 //            echo $url;
-//            array_push($allmatchURLs,$url);
-            echo "doing a push";
-            array_push($stack, "hello");
+            array_push($allmatchURLs,$url);
+//            echo "doing a push";
+//            array_push($stack, "hello");
         }
     }
 }
 fclose($file);
-//print_r($allmatchURLs);
+print_r($allmatchURLs);
 
-echo "about to print stack";
-print_r($stack);
-echo "about to print length";
-echo count($stack);
+//echo "about to print stack";
+//print_r($stack);
+//echo "about to print length";
+//echo count($stack);
 //var_dump($allmatchURLs);;
 //echo "length == ".count($allmatchURLs);;
 
