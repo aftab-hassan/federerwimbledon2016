@@ -20,8 +20,6 @@ $exitpattern = "Recently Played";
 $matchCount = 0;
 while ( ($line = fgets($file)) !== false)
 {
-    $matchCount++;
-
 //    echo strlen($line);
 //    echo $line;
 
@@ -30,6 +28,8 @@ while ( ($line = fgets($file)) !== false)
 
     if ((strpos($line, $pattern) !== false))
     {
+        $matchCount++;
+
 //        /* <td style="text-align:center;"><i><a href="/wiki/Marupuram_(2016_film)" title="Marupuram (2016 film)">Marupuram</a></i></td> */
 //        $data = GetBetween("title","</a></i></td>",$line);
 //        $moviename = substr($data, strpos($data, ">") + 1);
