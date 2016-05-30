@@ -53,7 +53,7 @@ while ( ($line = fgets($file)) !== false)
 fclose($file);
 print_r($allmatchURLs);
 //var_dump($allmatchURLs);;
-echo "length == ".count($allmatchURLs);
+//echo "length == ".count($allmatchURLs);
 
 //iterating all matchURLs and pushing stats to $rogernovakArray
 //this is an array of 45 matches * 2 players == 90 records
