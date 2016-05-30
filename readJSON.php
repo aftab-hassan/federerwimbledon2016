@@ -58,7 +58,7 @@ while ( ($line = fgets($file)) !== false)
 //            echo $line;
 
 //            <a class="btn-stats" href="https://matchstat.com/tennis/match-stats/m/8339482">
-            echo $data = GetBetween("href=\"","\">",$line);
+            echo $data = GetBetween("href=\"","\">",$line)." ";
         }
     }
 
