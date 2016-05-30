@@ -15,24 +15,30 @@ $rogernovakArray = array();
 //getting links to stats of all 45 matches
 $allmatchURL = array();
 $file = fopen($pageURL,"r");
+$pattern = "https://matchstat.com/tennis/match-stats/m/";
 while ( ($line = fgets($file)) !== false)
 {
-    echo strlen($line);
+//    echo strlen($line);
 //    echo $line;
+
+    if ((strpos($line, $pattern) !== false))
+    {
+//        /* <td style="text-align:center;"><i><a href="/wiki/Marupuram_(2016_film)" title="Marupuram (2016 film)">Marupuram</a></i></td> */
+//        $data = GetBetween("title","</a></i></td>",$line);
+//        $moviename = substr($data, strpos($data, ">") + 1);
+//
+//        /* otherwise the table formatting gets affected */
+//        if(strlen($moviename) < 50)
+//            array_push($movienamearray, $moviename);
+//
+//        $moviecount++;;
+//        $i++;
+
+        echo $line;
+    }
+
 }
 fclose($file);
-
-//$handle = fopen($pageURL, "r");
-//if ($handle) {
-//    while (($line = fgets($handle)) !== false) {
-//        // process the line read.
-//        echo strlen($line);
-//    }
-//
-//    fclose($handle);
-//} else {
-//    // error opening the file.
-//}
 
 //$matchURL = "https://matchstat.com/tennis/match-stats/m/8348298";
 //$ch = cmatchURL_init();
