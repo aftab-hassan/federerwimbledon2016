@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+<script>
+    CallURL();
+
+    function CallURL(){
+        $.ajax({
+            url: 'https://matchstat.com/tennis/match-stats/m/8348298',
+            type: "GET",
+            dataType: "jsonp",
+            async:false,
+            success: function (msg) {
+                JsonpCallback(msg);
+            },
+            error: function () {
+                ErrorFunction();
+            }
+
+        });
+
+    }
+
+    function JsonpCallback(json)
+    {
+        console.log("came inside JsonpCallback ...");
+        document.getElementById('summary').innerHtml=json.result;
+    }
+
+    function ErrorFunction()
+    {
+        console.log("came inside the ErrorFunction() ...");
+    }
+</script>
+</body>
+</html>

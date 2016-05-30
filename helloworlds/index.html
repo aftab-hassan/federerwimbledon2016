@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function foo(data)
+    {
+        // do stuff with JSON
+        console.log(data);
+    }
+
+    var script = document.createElement('script');
+    script.src = 'https://matchstat.com/tennis/match-stats/m/8348298?callback=foo'
+
+    document.body.appendChild(script);
+    // or document.head.appendChild(script) in modern browsers
+</script>
+</body>
+</html>

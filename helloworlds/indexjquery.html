@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+<script>
+    $.getJSON("https://matchstat.com/tennis/match-stats/m/8348298?callback=?", function(data) {
+        console.log(data);
+
+        // Get the element with id summary and set the inner text to the result.
+        $('#summary').text(data.result);
+    });
+</script>
+</body>
+</html>
