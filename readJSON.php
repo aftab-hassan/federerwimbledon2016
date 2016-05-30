@@ -85,8 +85,8 @@ print_r($winnerArray);
 //iterating all matchURLs and pushing stats to $rogernovakArray
 //this is an array of 45 matches * 2 players == 90 records
 $rogernovakArray = array();
-//for($i = 0; $i < count($allmatchURLs); $i++)
-for($i = 0; $i < 5; $i++)
+for($i = 0; $i < count($allmatchURLs); $i++)
+//for($i = 0; $i < 5; $i++)
 {
     $url = $allmatchURLs[$i];
     $ch = curl_init();
@@ -119,10 +119,10 @@ for($i = 0; $i < 5; $i++)
 }
 print_r($rogernovakArray);
 
-///* writing to csv file */
-//$fp = fopen('data.csv', 'w');
-//foreach ($rogernovakArray as $fields) {
-//    fputcsv($fp, $fields);
-//}
-//fclose($fp);
+/* writing to csv file */
+$fp = fopen('data.csv', 'w');
+foreach ($rogernovakArray as $fields) {
+    fputcsv($fp, $fields);
+}
+fclose($fp);
 ?>
