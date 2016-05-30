@@ -68,6 +68,8 @@ for($i = 0; $i < count($allmatchURLs); $i++)
     curl_close($ch);
 
     $jsonobj = json_decode($jsonstring);
+    var_dump($jsonobj['stats'][0]);
+    
     array_push($rogernovakArray,$jsonobj['stats'][0]);
     array_push($rogernovakArray,$jsonobj['stats'][1]);
 }
