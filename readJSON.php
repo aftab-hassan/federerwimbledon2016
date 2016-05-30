@@ -82,29 +82,43 @@ print_r($allmatchURLs);
 print_r($tournamentnameArray);
 print_r($winnerArray);
 
-
 //iterating all matchURLs and pushing stats to $rogernovakArray
 //this is an array of 45 matches * 2 players == 90 records
-//$rogernovakArray = array();
-////for($i = 0; $i < count($allmatchURLs); $i++)
-//for($i = 0; $i < 5; $i++)
-//{
-//    $url = $allmatchURLs[$i];
-//    $ch = curl_init();
-//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//    curl_setopt($ch, CURLOPT_URL, $url);
-//    $jsonstring = curl_exec($ch);
-//    curl_close($ch);
-//
-//    $jsonobj = json_decode($jsonstring,true);
-//
-//    array_push($rogernovakArray,$jsonobj['stats'][0]);
-//    array_push($rogernovakArray,$jsonobj['stats'][1]);
-//}
-//print_r($rogernovakArray);
-//
-//
+$rogernovakArray = array();
+//for($i = 0; $i < count($allmatchURLs); $i++)
+for($i = 0; $i < 5; $i++)
+{
+    $url = $allmatchURLs[$i];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    $jsonstring = curl_exec($ch);
+    curl_close($ch);
+
+    $jsonobj = json_decode($jsonstring,true);
+
+    //padding tournament name
+    $jsonobj['stats'][0]['tournament'] = $tournamentnameArray[$i];
+    $jsonobj['stats'][1]['tournament'] = $tournamentnameArray[$i];
+
+    //padding winner information
+    if($jsonobj['stats'][0]['player_fullname'] == $winnerArray[$i])
+    {
+        $jsonobj['stats'][0]['win'] = 1;
+        $jsonobj['stats'][1]['win'] = 0;
+    }
+    else
+    {
+        $jsonobj['stats'][0]['win'] = 0;
+        $jsonobj['stats'][1]['win'] = 1;
+    }
+
+    array_push($rogernovakArray,$jsonobj['stats'][0]);
+    array_push($rogernovakArray,$jsonobj['stats'][1]);
+}
+print_r($rogernovakArray);
+
 ///* writing to csv file */
 //$fp = fopen('data.csv', 'w');
 //foreach ($rogernovakArray as $fields) {
