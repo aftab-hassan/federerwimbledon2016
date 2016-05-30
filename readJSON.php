@@ -49,6 +49,8 @@ while ( ($line = fgets($file)) !== false)
     if ((strpos($line, $tournamentnamePattern) !== false))
     {
         $tournamentname = GetBetween("\">","</a>",$line);
+        $tournamentname = $tournamentname."</a>";
+        $tournamentname = GetBetween("\">","</a>",$tournamentname);
         array_push($tournamentnameArray,$tournamentname);
     }
 
@@ -57,6 +59,8 @@ while ( ($line = fgets($file)) !== false)
     if ((strpos($line, $winnerPattern) !== false))
     {
         $winner = GetBetween("\">","</a>",$line);
+        $winner = $winner."</a>";
+        $winner = GetBetween("\">","</a>",$winner);
         array_push($winnerArray,$winner);
     }
 
