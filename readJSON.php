@@ -16,10 +16,14 @@ $rogernovakArray = array();
 $allmatchURL = array();
 $file = fopen($pageURL,"r");
 $pattern = "https://matchstat.com/tennis/match-stats/m/";
+$exitpattern = "Recently Played";
 while ( ($line = fgets($file)) !== false)
 {
 //    echo strlen($line);
 //    echo $line;
+    
+    if ((strpos($line, $pattern) !== false))
+        exit;
 
     if ((strpos($line, $pattern) !== false))
     {
