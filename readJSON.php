@@ -85,7 +85,7 @@ for($i = 0; $i < count($allmatchURLs); $i++)
     var_dump($jsonobj['stats'][0]);
     echo $jsonobj['stats'][0]['match_stats_id'];
 
-    //    array_push($rogernovakArray,$jsonobj['stats'][0]);
+    array_push($rogernovakArray,$jsonobj['stats'][0]);
 }
 print_r($rogernovakArray);
 ?>
