@@ -6,6 +6,18 @@
  * Time: 9:06 AM
  */
 
+//helper function to get text between two pointers in a string
+function GetBetween($var1="",$var2="",$pool){
+    $temp1 = strpos($pool,$var1)+strlen($var1);
+    $result = substr($pool,$temp1,strlen($pool));
+    $dd=strpos($result,$var2);
+    if($dd == 0){
+        $dd = strlen($result);
+    }
+
+    return substr($result,0,$dd);
+}
+
 //this is the page which contains all the stats
 $pageURL = "https://matchstat.com/tennis/h2h-odds-bets/Roger%20Federer/Novak%20Djokovic";
 
@@ -43,9 +55,14 @@ while ( ($line = fgets($file)) !== false)
 
         if($matchCount > 1)
         {
-            echo $line;
+//            echo $line;
+
+//            <a class="btn-stats" href="https://matchstat.com/tennis/match-stats/m/8339482">
+            echo $data = GetBetween("href=\"","\">",$line);
         }
     }
+
+
 
 }
 fclose($file);
