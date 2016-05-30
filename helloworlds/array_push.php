@@ -7,6 +7,11 @@
  */
 
 $stack = array();
-array_push($stack, "apple");
+
+for($i = 0;$i < 10;$i++)
+{
+    array_push($stack, "apple");
+}
 print_r($stack);
+echo count($stack);
 ?>

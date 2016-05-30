@@ -55,6 +55,7 @@ while ( ($line = fgets($file)) !== false)
 fclose($file);
 //print_r($allmatchURLs);
 print_r($stack);
+echo count($stack);
 //var_dump($allmatchURLs);;
 //echo "length == ".count($allmatchURLs);;
 
