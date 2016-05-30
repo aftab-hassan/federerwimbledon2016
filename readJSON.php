@@ -59,7 +59,8 @@ fclose($file);
 $rogernovakArray = array();
 for($i = 0; $i < count($allmatchURLs); $i++)
 {
-    $url = $allmatchURLs[$i];
+//    $url = $allmatchURLs[$i];
+    $url = "https://matchstat.com/tennis/match-stats/m/8348298";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
