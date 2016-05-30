@@ -25,6 +25,7 @@ $pageURL = "https://matchstat.com/tennis/h2h-odds-bets/Roger%20Federer/Novak%20D
 $allmatchURLs = array();
 $pattern = "https://matchstat.com/tennis/match-stats/m/";
 $exitpattern = "Recently Played";
+$stack = array("orange", "banana");
 
 $file = fopen($pageURL,"r");
 $matchCount = 0;
@@ -46,12 +47,13 @@ while ( ($line = fgets($file)) !== false)
             $url = GetBetween("href=\"","\">",$line);
             echo $url;
 //            array_push($allmatchURLs,$url);
-            array_push($allmatchURLs,"hello");
+            array_push($stack, "hello");
         }
     }
 }
 fclose($file);
 print_r($allmatchURLs);
+print_r($stack);
 //var_dump($allmatchURLs);;
 //echo "length == ".count($allmatchURLs);;
 
