@@ -21,11 +21,8 @@ function GetBetween($var1="",$var2="",$pool){
 //this is the page which contains all the stats
 $pageURL = "https://matchstat.com/tennis/h2h-odds-bets/Roger%20Federer/Novak%20Djokovic";
 
-//this is an array of 45 matches * 2 players == 90 records
-$rogernovakArray = array();
-
 //getting links to stats of all 45 matches
-$allmatchURL = array();
+$allmatchURLs = array();
 $pattern = "https://matchstat.com/tennis/match-stats/m/";
 $exitpattern = "Recently Played";
 
@@ -46,25 +43,29 @@ while ( ($line = fgets($file)) !== false)
         if($matchCount > 1)
         {
 //            <a class="btn-stats" href="https://matchstat.com/tennis/match-stats/m/8339482">
-            echo GetBetween("href=\"","\">",$line);
-            array_push($allmatchURL,GetBetween("href=\"","\">",$line));
+            $url = GetBetween("href=\"","\">",$line);
+            array_push($allmatchURLs,$url);
         }
     }
 }
 fclose($file);
-var_dump($allmatchURL);
+var_dump($allmatchURLs);
 
-//$matchURL = "https://matchstat.com/tennis/match-stats/m/8348298";
-//$ch = cmatchURL_init();
-//curl_setopt($ch, CmatchURLOPT_SSL_VERIFYPEER, false);
-//curl_setopt($ch, CmatchURLOPT_RETURNTRANSFER, true);
-//curl_setopt($ch, CmatchURLOPT_matchURL, $matchURL);
-//$jsonstring = cmatchURL_exec($ch);
-//cmatchURL_close($ch);
+//iterating all matchURLs and pushing stats to $rogernovakArray
+//this is an array of 45 matches * 2 players == 90 records
+//$rogernovakArray = array();
+//for($i = 0; $i < count($allmatchURLs); $i++)
+//{
+//    $url = $allmatchURLs[$i];
+//    $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//    curl_setopt($ch, CURLOPT_URL, $url);
+//    $jsonstring = curl_exec($ch);
+//    curl_close($ch);
 //
-//$jsonobj = json_decode($jsonstring,true);
-//
-//array_push($rogernovakArray,$jsonobj['stats'][0]);
-//
-//var_dump($rogernovakArray);
+//    $jsonobj = json_decode($jsonstring);
+//    array_push($rogernovakArray,$jsonobj['stats'][0]);
+//    array_push($rogernovakArray,$jsonobj['stats'][1]);
+//}
 ?>
