@@ -85,7 +85,7 @@ while ( ($line = fgets($file)) !== false)
 
     /* <td class="score">7-5 6-2</td> */
     /* match score */
-    if ((strpos($line, $tournamentnamePattern) !== false))
+    if ((strpos($line, $scorePattern) !== false))
     {
         $score = GetBetween("\"score\">","</td>",$line);
         array_push($scoreArray,$score);
