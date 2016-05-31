@@ -142,9 +142,21 @@ for($i = 0; $i < count($allmatchURLs); $i++)
 
     $jsonobj = json_decode($jsonstring,true);
 
+    //padding date
+    $jsonobj['stats'][0]['date'] = $dateArray[$i];
+    $jsonobj['stats'][1]['date'] = $dateArray[$i];
+
     //padding tournament name
     $jsonobj['stats'][0]['tournament'] = $tournamentnameArray[$i];
     $jsonobj['stats'][1]['tournament'] = $tournamentnameArray[$i];
+
+    //padding round
+    $jsonobj['stats'][0]['round'] = $roundArray[$i];
+    $jsonobj['stats'][1]['round'] = $roundArray[$i];
+
+    //padding score
+    $jsonobj['stats'][0]['score'] = $scoreArray[$i];
+    $jsonobj['stats'][1]['score'] = $scoreArray[$i];
 
     //padding winner information
     if($jsonobj['stats'][0]['player_fullname'] == $winnerArray[$i])
