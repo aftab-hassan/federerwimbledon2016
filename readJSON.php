@@ -111,7 +111,7 @@ while ( ($line = fgets($file)) !== false)
     /* round */
     if($nextLineRound == 1)
     {
-        array_push($scoreArray,$line);
+        array_push($roundArray,$line);
     }
     if ((strpos($line, $roundPattern) !== false))
         $nextLineRound = 1;
