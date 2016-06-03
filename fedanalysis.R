@@ -26,10 +26,10 @@ for(i in 1:ncol(df))
 {
 	NApercentage = round((length(which(is.na(df[,i])))/nrow(df))*100)
 	cat(paste("NA percentage in",names(df)[i],"==",NApercentage,"\n"))
-
+	
 	if(NApercentage > 30)
 		toremove = c(toremove,names(df)[i])
-
+		
 	if(NApercentage > 0 && NApercentage <= 30)
 		toimpute = c(toimpute,names(df)[i])
 }
@@ -44,17 +44,17 @@ for(i in 1:length(toremove))
 for(i in 1:length(toimpute))
 {
 	col = toimpute[i]
-
+	
 	players = c("Roger Federer","Novak Djokovic")
-
+	
 	for(j in 1:length(players))
 	{
 		mean = round(summary(df[which(df$player_fullname == players[j]),which(names(df) == col)])["Mean"])
 		cat(paste("For",players[j],": Imputing",col,"with mean == ",mean,"\n"))
-
+		
 		NArows = c(which(is.na(df[which(df$player_fullname == players[j]),col])),which(df[which(df$player_fullname == players[j]),col] == 0))
 		cat(paste(NArows,"\n"))
-
+		
 		df[which(df$player_fullname == players[j])[NArows],col] = mean
 	}
 }
@@ -63,20 +63,20 @@ for(i in 1:nrow(df))
 {
 	#finding successful first serve percentage for each match for each player
 	df[i,"PERCENTAGE_FIRSTSERVESUCCESS"] = round((df[i,"serve_1st_total"]/df[i,"serve_1st_attempts"])*100)
-
+	
 	#finding points won percentage for each match for each player
-	df[i,"PERCENTAGE_TOTALPOINTSWON"] = round((df[i,"points_won"]/df[i,"total_points"])*100)
+	df[i,"PERCENTAGE_TOTALPOINTSWON"] = round((df[i,"points_won"]/df[i,"total_points"])*100)	
 
-	#finding first serve points won percentage for each match for each player
+	#finding first serve points won percentage for each match for each player	
 	df[i,"PERCENTAGE_FIRSTSERVEPOINTSWON"] = round((df[i,"serve_1st_won"]/df[i,"serve_1st_total"])*100)
 
-	#finding second serve points won percentage for each match for each player
+	#finding second serve points won percentage for each match for each player	
 	df[i,"PERCENTAGE_SECONDSERVEPOINTSWON"] = round((df[i,"serve_2nd_won"]/df[i,"serve_2nd_total"])*100)
 
 	#finding return points won percentage for each match for each player
 	df[i,"PERCENTAGE_RETURNPOINTSWON"] = round((df[i,"return_points_won"]/df[i,"return_points_total"])*100)
 
-	#finding break points won percentage for each match for each player
+	#finding break points won percentage for each match for each player	
 	df[i,"PERCENTAGE_BREAKPOINTSWON"] = round((df[i,"return_break_points_won"]/df[i,"return_break_points_total"])*100)
 }
 
@@ -100,18 +100,18 @@ if(grandslam == 1)
 # Regression Tree Example
 library(rpart)
 
-# grow tree
+# grow tree 
 model <- rpart(win~., method="anova", data=df[,predictors])
 
-printcp(model) # display the results
-plotcp(model) # visualize cross-validation results
+printcp(model) # display the results 
+plotcp(model) # visualize cross-validation results 
 summary(model) # detailed summary of splits
 
-# create additional plots
-par(mfrow=c(1,2)) # two plots on one page
-rsq.rpart(model) # visualize cross-validation results
+# create additional plots 
+par(mfrow=c(1,2)) # two plots on one page 
+rsq.rpart(model) # visualize cross-validation results  	
 
-# plot tree
+# plot tree 
 plot(model, uniform=TRUE, main="Regression Tree for predicting Winner")
 text(model, use.n=TRUE, all=TRUE, cex=.8)
 
@@ -154,7 +154,7 @@ if(grandslam == 1)
 # Regression Tree Example
 library(rpart)
 
-# grow tree
+# grow tree 
 model <- rpart(win~., method="anova", data=df[,predictors])
 varImp(model)
 
